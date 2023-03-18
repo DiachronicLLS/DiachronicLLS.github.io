@@ -22,6 +22,7 @@
 <body onLoad="initMap()">
     <script>
     //初始化地图
+    var center = new TMap.LatLng(39.984104, 116.307503);
     var map = new TMap.Map("container", {
         center: center
     });
@@ -38,18 +39,18 @@
             })
         },
         geometries: [{
-        "id": "1",   //点标记唯一标识，后续如果有删除、修改位置等操作，都需要此id
-        "styleId": 'myStyle',  //指定样式id
-        "position": new TMap.LatLng(39.954104, 116.357503),  //点标记坐标位置
-        "properties": {//自定义属性
-            "title": "marker1"
+            "id": "1",   //点标记唯一标识，后续如果有删除、修改位置等操作，都需要此id
+            "styleId": 'marker',  //指定样式id
+            "position": new TMap.LatLng(39.954104, 116.357503),  //点标记坐标位置
+            "properties": {//自定义属性
+               "title": "marker1"
         }
     }, {//第二个点标记
-        "id": "2",
-        "styleId": 'marker',
-        "position": new TMap.LatLng(39.994104, 116.287503),
-        "properties": {
-            "title": "marker2"
+            "id": "2",
+            "styleId": 'marker',
+            "position": new TMap.LatLng(39.994104, 116.287503),
+            "properties": {
+               "title": "marker2"
         }
     }
     ]

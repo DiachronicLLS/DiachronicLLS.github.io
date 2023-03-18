@@ -1,1 +1,19 @@
 <p>地图测试（气到无语版）</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type='text/javascript'
+            src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AoMLYGOCEvfYC6wO_68DIt4OZzhwpGBfSsj6B8zFlKBI0arLmzhsVfopXw-CaulN' 
+            async defer>    
+    </script> 
+    <script type='text/javascript'>
+    function GetMap()
+    {
+        var map = new Microsoft.Maps.Map('#myMap');}
+    </script>
+</head>
+<body onload="GetMap();">
+    <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
+</body>
+</html>

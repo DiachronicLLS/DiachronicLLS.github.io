@@ -26,7 +26,7 @@
     <div id="container"></div>
     <script type="text/javascript">
         function initMap() {
-            var center = new TMap.LatLng(39.984104, 116.307503);
+            var center = new TMap.LatLng(31.218271,121.462287);
             //初始化地图
             var map = new TMap.Map("container", {
                 rotation: 20,//设置地图旋转角度
@@ -47,12 +47,11 @@
                      anchor: { x: 10, y: 30 }, // 描点位置
           }),
         },
-        geometries: [
+                 geometries: [
           // 点标记数据数组
-          {
-            // 标记位置(纬度，经度，高度)
-            position: center,
-            id: 'marker',
+                      {
+                        position: center,
+                        id: 'marker',
           },
         ],
       });

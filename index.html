@@ -1,63 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>创建地图</title>
-</head>
-<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
-<style type="text/css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>语言景观语料地图</title>
+  </head>
+  <script
+    charset="utf-8"
+    src="https://wemapvis.map.qq.com/api/gljs/v2?key=L73BZ-G5WCD-VZF4U-P42ZM-57S4H-47BOV"
+  ></script>
+  <style type="text/css">
     html,
     body {
-        height: 100%;
-        margin: 0px;
-        padding: 0px;
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
     }
 
     #container {
-        width: 100%;
-        height: 100%;
+      width: 100%;
+      height: 100%;
     }
-</style>
+  </style>
 
-<body onload="initMap()">
+  <body onload="initMap()">
     <div id="container"></div>
-    <script type="text/javascript">
-        function initMap() {
-            var center = new TMap.LatLng(31.218271,121.462287);
-            //初始化地图
-            var map = new TMap.Map("container", {
-                rotation: 20,//设置地图旋转角度
-                pitch:30, //设置俯仰角度（0~45）
-                zoom:12,//设置地图缩放级别
-                center: center//设置地图中心点坐标
-            });
-        }
+    <script>
+      function initMap() {
+        var center = new TMap.LatLng(31.21796,121.46132);
 
-
-             var marker = new TMap.MultiMarker({
-                 map: map,
-                 styles: {
-          // 点标记样式
-                     marker: new TMap.MarkerStyle({
-                     width: 20, // 样式宽
-                     height: 30, // 样式高
-                     anchor: { x: 10, y: 30 }, // 描点位置
-          }),
-        },
-                 geometries: [
-          // 点标记数据数组
-                      {
-                        position: center,
-                        id: 'marker',
+        //初始化地图
+        var map = new TMap.Map("container", {
+          zoom: 13, //设置地图缩放级别
+          center: center, //设置地图中心点坐标
+          baseMap: {
+            type: "vector",
+            features: ["base", "building3d"], // 隐藏矢量文字
           },
-        ],
-      });
-
-
+        });
+        //初始化点标记
+        var marker = new TMap.MultiMarker({
+          map: map, //显示Marker图层的底图
+          styles: {
+            small: new TMap.MarkerStyle({
+              //点标注的相关样式
+              width: 34, //宽度
+              height: 46, //高度
+              anchor: { x: 17, y: 23 }, //标注点图片的锚点位置
+              src: "https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/small.png", //标注点图片url或base64地址
+              color: "#333", //标注点文本颜色
+              size: 16, //标注点文本文字大小
+              direction: "bottom", //标注点文本文字相对于标注点图片的方位
+              offset: { x: 0, y: 8 }, //标注点文本文字基于direction方位的偏移属性
+              strokeColor: "#fff", //标注点文本描边颜色
+              strokeWidth: 2, //标注点文本描边宽度
+            }),
+            big: new TMap.MarkerStyle({
+              width: 58, //宽度
+              height: 76, //高度
+              anchor: { x: 36, y: 32 }, //标注点图片的锚点位置
+              src: "https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/big.png", //标注点图片url或base64地址
+              color: "#333", //标注点文本颜色
+              size: 22, //标注点文本文字大小
+              direction: "bottom", //标注点文本文字相对于标注点图片的方位
+              strokeColor: "#fff", //标注点文本描边颜色
+              offset: { x: 0, y: 10 }, //标注点文本文字基于direction方位的偏移属性
+              strokeWidth: 2, //标注点文本描边宽度
+            }),
+          },
+          enableCollision: true, //开启碰撞
+          geometries: [
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.208927,121.451763), //标注点位置
+              content: "FenyangR-普希金-1937至今", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.21694,121.46917), //标注点位置
+              content: "Fuxing Park-1970s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.213455,121.460234), //标注点位置
+              content: "FuxingM-上海电影院-1990s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.221313,121.470822), //标注点位置
+              content: "HengshanR-毕卡第公寓衡山宾馆-1930末", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.21796,121.46132), //标注点位置
+              content: "HuahaiM-Cathay Theatre-1947至今", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.218095,121.462503), //标注点位置
+              content: "HuaihaiM-乔士（人民）照相馆-1949至2006", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(39.96305, 116.38794), //标注点位置
+              content: "便宜坊", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.218271,121.462287), //标注点位置
+              content: "HuaihaiM-百灵洋行-1920s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.219183,121.465396), //标注点位置
+              content: "HuaihaiM-沧浪亭-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.218859,121.46346), //标注点位置
+              content: "HuaihaiM-大方绸缎公司-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.218912,121.465349), //标注点位置 
+              content: "HuaihaiM-大同烤鸭酒家-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.21855,121.46446), //标注点位置
+              content: "HuaihaiM-东方眼镜商店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.217633,121.459785), //标注点位置
+              content: "HuaihaiM-哈尔滨食品厂旧址-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.218414,121.463569), //标注点位置
+              content: "HuaihaiM-海燕食品厂门市部与成都饭店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.217227,121.460527), //标注点位置
+              content: "HuaihaiM-红星皮鞋店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.220448,121.467389), //标注点位置
+              content: "HuaihaiM-红星眼镜公司-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.220027,121.467796), //标注点位置
+              content: "HuaihaiM-沪光服装店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.218057,121.46231), //标注点位置
+              content: "HuaihaiM-黄山茶叶店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.217735,121.461664), //标注点位置
+              content: "HuaihaiM-金龙丝绸呢绒公司-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.218382,121.465224), //标注点位置
+              content: "HuaihaiM-兰花衣装百货店-1990-1992", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.225949,121.47967), //标注点位置
+              content: "HuaihaiM-兰生大厦-1990s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.217117,121.461262), //标注点位置
+              content: "HuaihaiM-老大昌食品厂-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.219183,121.465396), //标注点位置
+              content: "HuaihaiM-绿野饭店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.218882,121.463517), //标注点位置
+              content: "HuaihaiM-马兰花童装商店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.218271,121.462287), //标注点位置
+              content: "HuaihaiM-奇美皮鞋公司-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.217448,121.45922), //标注点位置
+              content: "HuaihaiM-启发西服公司-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.22109,121.46972), //标注点位置
+              content: "HuaihaiM-全国土特产食品公司商场-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.218416,121.462606), //标注点位置
+              content: "HuaihaiM-上海床上用品商店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.216487,121.459342), //标注点位置
+              content: "HuaihaiM-上海电脑商店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.217448,121.45922), //标注点位置
+              content: "HuaihaiM-上海合作水果店-1970s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.217868,121.461988), //标注点位置
+              content: "HuaihaiM-上海西菜馆-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.221595,121.470008), //标注点位置
+              content: "HuaihaiM-上海钟表商店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.21872,121.464707), //标注点位置
+              content: "HuaihaiM-泰山文化用品商店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.21992,121.466282), //标注点位置
+              content: "HuaihaiM-特卡琴科兄弟咖啡厅-租界时期", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.219442,121.465816), //标注点位置
+              content: "HuaihaiM-天山回民食品商店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.221583,121.470189), //标注点位置
+              content: "HuaihaiM-西班牙磨坊酒店-约1940", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.218252,121.462936), //标注点位置
+              content: "HuaihaiM-新歌电视机商店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.221004,121.468777), //标注点位置
+              content: "HuaihaiM-新光光学仪器商店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.21846,121.462655), //标注点位置
+              content: "HuaihaiM-新世界女子时装店-1986", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.220921,121.468566), //标注点位置
+              content: "HuaihaiM-野荸荠食品商店-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.221194,121.469179), //标注点位置
+              content: "HuaihaiM-益民百货公司-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.217549,121.459313), //标注点位置
+              content: "HuaihaiM-玉华工艺品商店-1980s", //标注点文本
+            }, 
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.214159,121.468383), //标注点位置
+              content: "Zhougong-周公馆大门牌-1947", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.221036,121.460523), //标注点位置
+              content: "ChangleR-兰心大戏院/上海艺术剧场-1950s-80s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.208262,121.468831), //标注点位置
+              content: "Tianzifang-2006", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.209821,121.465418), //标注点位置
+              content: "ShaoxingR-上海市电影局海报-1980s", //标注点文本
+            },
+            {
+              styleId: "big", //对应中的样式id
+              position: new TMap.LatLng(31.221194,121.469179), //标注点位置
+              content: "HuaihaiM-正章实业总公司-1980s", //标注点文本
+            },
+          ],
+        });
+      }
     </script>
-</body>
-
+  </body>
 </html>
